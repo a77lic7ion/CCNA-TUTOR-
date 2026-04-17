@@ -10,9 +10,6 @@ import { auth, db, onAuthStateChanged, FirebaseUser, googleProvider } from './li
 import { signInWithPopup } from 'firebase/auth';
 import { doc, getDoc, setDoc, onSnapshot } from 'firebase/firestore';
 import { UserProfile } from './types';
-import { GoogleGenAI } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export default function App() {
   const [user, setUser] = useState<FirebaseUser | null>(null);

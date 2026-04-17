@@ -2,9 +2,15 @@ import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
 import { fileURLToPath } from "url";
+import { GoogleGenAI } from "@google/genai";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
 async function startServer() {
   const app = express();
@@ -15,6 +21,30 @@ async function startServer() {
   // API routes
   app.get("/api/health", (req, res) => {
     res.json({ status: "ok", timestamp: new Date().toISOString() });
+  });
+
+  // AI Assistant Proxy
+  app.post("/api/ai/chat", async (req, res) => {
+    try {
+      const { message, context } = req.body;
+      const model = (genAI as any).getGenerativeModel({ model: "gemini-1.5-flash" });
+      
+      const prompt = `
+        You are an expert CCNA 200-301 Tutor. 
+        Context: ${JSON.stringify(context || {})}
+        User Question: ${message}
+        
+        Provide a concise, technical explanation. Use Cisco IOS syntax formatting for commands.
+        If the user is struggling with a concept, provide an analogy.
+      `;
+
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      res.json({ text: response.text() });
+    } catch (error) {
+      console.error("AI Error:", error);
+      res.status(500).json({ error: "Failed to reach AI Engine" });
+    }
   });
 
   // Example proxy or backend logic for labs could go here
