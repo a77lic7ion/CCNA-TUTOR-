@@ -1,28 +1,29 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, User as FirebaseUser } from 'firebase/auth';
-import { getFirestore, doc, getDocFromServer } from 'firebase/firestore';
+import { initializeApp, FirebaseApp } from 'firebase/app';
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, User as FirebaseUser, Auth } from 'firebase/auth';
+import { getFirestore, doc, getDocFromServer, Firestore } from 'firebase/firestore';
 
 // Handle missing config file gracefully for Vercel/Production
-let firebaseConfig;
-try {
-  // Use @ alias or relative path. Since it's in the root, it might not be bundled if not explicitly handled.
-  // In Vite, it's safer to use an object or env vars for production.
-  firebaseConfig = await import('../../firebase-applet-config.json').then(m => m.default);
-} catch (e) {
-  // Fallback to env vars for Vercel
-  firebaseConfig = {
-    apiKey: (import.meta as any).env.VITE_FIREBASE_API_KEY,
-    authDomain: (import.meta as any).env.VITE_FIREBASE_AUTH_DOMAIN,
-    projectId: (import.meta as any).env.VITE_FIREBASE_PROJECT_ID,
-    appId: (import.meta as any).env.VITE_FIREBASE_APP_ID,
-    firestoreDatabaseId: (import.meta as any).env.VITE_FIREBASE_DATABASE_ID
-  };
-}
+// We import the config sync or provide a fallback.
+import firebaseConfigData from '../../firebase-applet-config.json';
+
+const firebaseConfig = {
+  ...firebaseConfigData,
+  apiKey: (import.meta as any).env.VITE_FIREBASE_API_KEY || firebaseConfigData.apiKey,
+  authDomain: (import.meta as any).env.VITE_FIREBASE_AUTH_DOMAIN || firebaseConfigData.authDomain,
+  projectId: (import.meta as any).env.VITE_FIREBASE_PROJECT_ID || firebaseConfigData.projectId,
+  appId: (import.meta as any).env.VITE_FIREBASE_APP_ID || firebaseConfigData.appId,
+  firestoreDatabaseId: (import.meta as any).env.VITE_FIREBASE_DATABASE_ID || (firebaseConfigData as any).firestoreDatabaseId
+};
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId || '(default)');
 export const googleProvider = new GoogleAuthProvider();
+
+// Customizing the provider for better behavior in iframes if needed
+googleProvider.setCustomParameters({
+  prompt: 'select_account'
+});
 
 // Connection test
 async function testConnection() {

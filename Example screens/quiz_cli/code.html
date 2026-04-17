@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CCNA AI Tutor - Quiz Interface</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffdbd0",
+                        "secondary-fixed-dim": "#c9c6bc",
+                        "on-primary-container": "#541400",
+                        "outline-variant": "#55433d",
+                        "tertiary-fixed-dim": "#5edac7",
+                        "on-secondary-fixed": "#1c1c15",
+                        "error-container": "#93000a",
+                        "surface-bright": "#393937",
+                        "inverse-on-surface": "#31302e",
+                        "background": "#131312",
+                        "surface-container-highest": "#353533",
+                        "on-surface": "#e5e2df",
+                        "primary": "#ffb59e",
+                        "tertiary-fixed": "#7df7e3",
+                        "surface-container-lowest": "#0e0e0d",
+                        "on-secondary": "#31312a",
+                        "primary-fixed-dim": "#ffb59e",
+                        "on-background": "#e5e2df",
+                        "on-tertiary": "#003731",
+                        "surface-tint": "#ffb59e",
+                        "tertiary": "#5edac7",
+                        "surface-variant": "#353533",
+                        "on-primary": "#5c1902",
+                        "on-error": "#690005",
+                        "surface-dim": "#131312",
+                        "error": "#ffb4ab",
+                        "inverse-primary": "#99462a",
+                        "surface-container-high": "#2a2a28",
+                        "primary-container": "#d97757",
+                        "inverse-surface": "#e5e2df",
+                        "secondary": "#c9c6bc",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#09a493",
+                        "on-primary-fixed-variant": "#7a2f15",
+                        "on-primary-fixed": "#390b00",
+                        "on-surface-variant": "#dbc1b9",
+                        "surface-container-low": "#1c1c1a",
+                        "on-tertiary-container": "#00312b",
+                        "on-tertiary-fixed-variant": "#005047",
+                        "surface": "#131312",
+                        "secondary-fixed": "#e6e2d8",
+                        "on-secondary-container": "#b8b5ab",
+                        "surface-container": "#20201e",
+                        "secondary-container": "#48473f",
+                        "on-secondary-fixed-variant": "#48473f",
+                        "outline": "#a38c85",
+                        "on-tertiary-fixed": "#00201c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cli-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2rem;
+            background-color: #ffb59e;
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #131312;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a28;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased min-h-screen overflow-hidden flex">
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex flex-col p-4 gap-y-2 h-screen w-64 fixed left-0 top-0 bg-[#131312] border-r border-[#2a2a28]/20 z-40">
+<div class="mb-8 px-2">
+<h1 class="text-lg font-headline text-[#ffb59e]">Network Monolith</h1>
+<p class="text-[10px] text-secondary opacity-60 tracking-widest uppercase">Active Session: VLAN 10</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c0b6] hover:bg-[#20201e] hover:text-white transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-[#2a2a28] text-[#ffb59e] rounded-sm transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-medium text-sm">Quiz</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c0b6] hover:bg-[#20201e] hover:text-white transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-medium text-sm">Labs</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c0b6] hover:bg-[#20201e] hover:text-white transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium text-sm">Settings</span>
+</a>
+</nav>
+<button class="mt-auto mb-6 mx-2 py-3 bg-primary-container text-on-primary-container font-headline font-bold text-xs tracking-wider uppercase rounded-lg shadow-[0_0_15px_rgba(217,119,87,0.2)] hover:scale-105 active:scale-95 transition-all">
+            New Simulation
+        </button>
+<div class="flex flex-col gap-1 border-t border-[#2a2a28]/20 pt-4">
+<a class="flex items-center gap-3 px-4 py-2 text-[#c3c0b6] hover:text-white text-xs" href="#">
+<span class="material-symbols-outlined text-sm">menu_book</span>
+                Documentation
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-[#c3c0b6] hover:text-white text-xs" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+                Help
+            </a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 md:ml-64 flex flex-col h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full md:w-[calc(100%-16rem)] z-50 bg-[#131312] text-[#ffb59e] font-headline tracking-tight flex justify-between items-center px-6 h-16 border-none">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold tracking-tighter">CCNA AI Tutor</span>
+<span class="hidden md:block h-4 w-px bg-outline-variant/30"></span>
+<span class="hidden md:block text-xs font-mono text-secondary tracking-widest uppercase">Module 04: Switching Fundamentals</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined cursor-pointer hover:text-[#ffb59e] transition-colors duration-200 active:scale-95">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-[#ffb59e] transition-colors duration-200 active:scale-95">terminal</span>
+</div>
+<div class="flex items-center gap-3 cursor-pointer group">
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/20">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Professional portrait of a male network engineer with short dark hair and a confident expression in a tech office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8HbqegFVvuOBmUTgIxbvshmXPRY0J5IvpIrq8MynxNlboTmmVDx8Ek3sZrOD3B_2OZmkuLXt1KU8bFWyYW5oXKislL0HmZwjN6JeOM_AzASYeYJa5jHBA6Fz0WwmfJ3bVLaWbLwqRiqPS_KVsm0P79oYLg-s_-XuwppG9CdmXhzkMUMSL0L0KkHG_Cu384Za727dSZ4mH5DsM7TLTHHk8Xkybo3JWbn1Ic9FYCwq5rL-l-6BHUDK9Xl_eSOPxh_QvgDOFbiNW410"/>
+</div>
+<span class="text-sm font-medium hidden lg:block group-hover:text-[#ffb59e]">Profile</span>
+</div>
+</div>
+</header>
+<!-- Content Area: Split View -->
+<div class="mt-16 flex-1 flex flex-col md:flex-row overflow-hidden">
+<!-- Question Section -->
+<section class="w-full md:w-1/2 flex flex-col bg-surface-container-low p-8 border-r border-[#2a2a28]/20 overflow-y-auto">
+<div class="flex items-center justify-between mb-8">
+<span class="text-[10px] font-mono font-bold text-primary tracking-[0.2em] uppercase px-2 py-1 bg-primary/10 rounded">Question 14 of 50</span>
+<div class="flex gap-2">
+<div class="h-1 w-12 bg-primary rounded-full"></div>
+<div class="h-1 w-12 bg-surface-container-highest rounded-full"></div>
+<div class="h-1 w-12 bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+<div class="flex-1">
+<h2 class="text-xl font-headline font-semibold text-on-surface mb-8 leading-snug">
+                        A network administrator needs to verify which VLANs are currently active on a Cisco switch and identify which ports are assigned to each VLAN. Which command should be used?
+                    </h2>
+<div class="grid grid-cols-1 gap-3">
+<!-- Option A -->
+<button class="flex items-start gap-4 p-5 bg-surface-container hover:bg-surface-container-high transition-all duration-200 text-left group">
+<span class="flex-shrink-0 w-8 h-8 flex items-center justify-center border border-outline-variant/30 font-headline font-bold text-secondary group-hover:text-primary group-hover:border-primary transition-colors">A</span>
+<span class="text-on-surface-variant font-medium leading-relaxed">show running-config</span>
+</button>
+<!-- Option B -->
+<button class="flex items-start gap-4 p-5 bg-surface-container hover:bg-surface-container-high transition-all duration-200 text-left group">
+<span class="flex-shrink-0 w-8 h-8 flex items-center justify-center border border-outline-variant/30 font-headline font-bold text-secondary group-hover:text-primary group-hover:border-primary transition-colors">B</span>
+<span class="text-on-surface-variant font-medium leading-relaxed">show vlan brief</span>
+</button>
+<!-- Option C -->
+<button class="flex items-start gap-4 p-5 bg-surface-container hover:bg-surface-container-high transition-all duration-200 text-left group">
+<span class="flex-shrink-0 w-8 h-8 flex items-center justify-center border border-outline-variant/30 font-headline font-bold text-secondary group-hover:text-primary group-hover:border-primary transition-colors">C</span>
+<span class="text-on-surface-variant font-medium leading-relaxed">show interfaces status</span>
+</button>
+<!-- Option D -->
+<button class="flex items-start gap-4 p-5 bg-surface-container hover:bg-surface-container-high transition-all duration-200 text-left group">
+<span class="flex-shrink-0 w-8 h-8 flex items-center justify-center border border-outline-variant/30 font-headline font-bold text-secondary group-hover:text-primary group-hover:border-primary transition-colors">D</span>
+<span class="text-on-surface-variant font-medium leading-relaxed">show mac address-table</span>
+</button>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary-container"></div>
+<span class="ml-3 text-xs font-medium text-secondary-fixed-dim uppercase tracking-wider">Explanation</span>
+</label>
+</div>
+<button class="px-8 py-3 bg-surface-container-high text-secondary opacity-50 font-headline font-bold text-sm tracking-widest uppercase cursor-not-allowed" disabled="">
+                        Next
+                    </button>
+</div>
+</section>
+<!-- Mock CLI Section -->
+<section class="w-full md:w-1/2 flex flex-col bg-surface-container-lowest">
+<!-- Terminal Header -->
+<div class="bg-surface-container-high px-4 py-2 flex items-center justify-between border-b border-surface-container-highest/30">
+<div class="flex items-center gap-2">
+<div class="flex gap-1.5 mr-2">
+<div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-secondary/20"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary/20"></div>
+</div>
+<span class="text-[10px] font-mono text-secondary tracking-widest uppercase">SW-PRO-ACCESS-01 — Console 0</span>
+</div>
+<span class="text-[10px] font-mono text-tertiary">Connected: 04:12:15</span>
+</div>
+<!-- Terminal Content -->
+<div class="flex-1 p-6 font-mono text-sm overflow-y-auto leading-relaxed scrollbar-hide">
+<div class="text-secondary opacity-70 mb-4">
+                        Cisco IOS Software, C2960 Software (C2960-LANBASEK9-M), Version 15.0(2)SE7, RELEASE SOFTWARE (fc1)<br/>
+                        Copyright (c) 1986-2014 by Cisco Systems, Inc.<br/>
+                        Compiled Tue 16-Sep-14 11:32 by prod_rel_team
+                    </div>
+<div class="mb-4">
+<span class="text-secondary">SW-01&gt;</span> <span class="text-on-surface">enable</span><br/>
+<span class="text-secondary">SW-01#</span> <span class="text-on-surface">configure terminal</span><br/>
+<span class="text-secondary-fixed-dim italic text-xs">Enter configuration commands, one per line. End with CNTL/Z.</span>
+</div>
+<div class="mb-4">
+<span class="text-secondary">SW-01(config)#</span> <span class="text-on-surface">vlan 10</span><br/>
+<span class="text-secondary">SW-01(config-vlan)#</span> <span class="text-on-surface">name SALES_DEPT</span><br/>
+<span class="text-secondary">SW-01(config-vlan)#</span> <span class="text-on-surface">exit</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-secondary font-bold">SW-01#</span>
+<span class="text-primary-fixed-dim">show vla</span><span class="cli-cursor"></span>
+</div>
+<!-- Output Suggestion (Subtle) -->
+<div class="mt-8 p-4 bg-tertiary/5 border border-tertiary/10 rounded">
+<div class="flex items-center gap-2 mb-2 text-tertiary">
+<span class="material-symbols-outlined text-xs">info</span>
+<span class="text-[10px] uppercase font-bold tracking-widest">AI Suggestion</span>
+</div>
+<p class="text-xs text-secondary leading-relaxed">
+                            Try typing <code class="text-tertiary">show vlan brief</code> to view the VLAN database with port assignments.
+                        </p>
+</div>
+</div>
+<!-- CLI Controls -->
+<div class="p-4 bg-surface-container border-t border-surface-container-highest/20">
+<div class="flex gap-2 mb-3">
+<button class="px-3 py-1.5 bg-surface-container-high hover:bg-surface-container-highest text-[10px] font-mono text-secondary rounded transition-colors uppercase tracking-widest">show</button>
+<button class="px-3 py-1.5 bg-surface-container-high hover:bg-surface-container-highest text-[10px] font-mono text-secondary rounded transition-colors uppercase tracking-widest">config t</button>
+<button class="px-3 py-1.5 bg-surface-container-high hover:bg-surface-container-highest text-[10px] font-mono text-secondary rounded transition-colors uppercase tracking-widest">int gi0/1</button>
+<button class="px-3 py-1.5 bg-surface-container-high hover:bg-surface-container-highest text-[10px] font-mono text-secondary rounded transition-colors uppercase tracking-widest">copy run start</button>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 py-3 bg-primary-container text-on-primary-container font-headline font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(217,119,87,0.15)]">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+                            Run Command
+                        </button>
+<button class="flex-1 py-3 bg-surface-container-highest text-primary font-headline font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 border border-primary/20">
+<span class="material-symbols-outlined text-sm">psychology</span>
+                            Confuse AI
+                        </button>
+</div>
+</div>
+</section>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-[#0e0e0d]/90 backdrop-blur-xl border-t border-[#2a2a28] flex justify-around items-center h-16 px-4 shadow-[0_-10px_20px_rgba(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-[#c3c0b6] p-2 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#ffb59e] bg-[#2a2a28] rounded-lg p-2 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Quiz</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#c3c0b6] p-2 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">code</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">Labs</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#c3c0b6] p-2 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">terminal</span>
+<span class="text-[10px] uppercase tracking-widest font-bold">CLI</span>
+</div>
+</nav>
+</main>
+</body></html>

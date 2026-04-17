@@ -5,6 +5,7 @@ import { Dashboard } from './components/Dashboard';
 import { Quiz } from './components/Quiz';
 import { Simulations } from './components/Simulations';
 import { Settings } from './components/Settings';
+import { LessonView } from './components/LessonView';
 import { ViewType } from './components/Sidebar';
 import { auth, db, onAuthStateChanged, FirebaseUser, googleProvider } from './lib/firebase';
 import { signInWithPopup } from 'firebase/auth';
@@ -43,12 +44,18 @@ export default function App() {
 
   const handleStart = async (name: string) => {
     if (isAuthLoading) return;
-    setIsAuthLoading(true);
+    
+    // Explicit guest check to avoid unnecessary auth triggers
+    if (name === 'Guest') {
+      localStorage.setItem('ccna_tutor_name', 'Guest');
+      setResumeName('Guest');
+      return;
+    }
 
+    setIsAuthLoading(true);
     try {
       let currentUser = user;
       if (!currentUser) {
-        // Switch to Google Sign-In as Anonymous is restricted by default
         const cred = await signInWithPopup(auth, googleProvider);
         currentUser = cred.user;
       }
@@ -99,15 +106,23 @@ export default function App() {
   const renderContent = () => {
     switch (currentView) {
       case 'dashboard':
-        return <Dashboard stats={{ overallMastery: profile?.overallScore || 64, streak: 5, sessions: profile?.totalSessions || 12, lastSynced: '2023-11-24 14:02:11' }} />;
+        return <Dashboard 
+          stats={{ overallMastery: profile?.overallScore || 64, streak: 5, sessions: profile?.totalSessions || 12, lastSynced: '2023-11-24 14:02:11' }} 
+          onViewChange={setCurrentView}
+        />;
       case 'quiz':
         return <Quiz />;
       case 'labs':
         return <Simulations />;
+      case 'lessons':
+        return <LessonView />;
       case 'settings':
         return <Settings />;
       default:
-        return <Dashboard stats={{ overallMastery: 64, streak: 5, sessions: 12, lastSynced: '2023-11-24 14:02:11' }} />;
+        return <Dashboard 
+          stats={{ overallMastery: 64, streak: 5, sessions: 12, lastSynced: '2023-11-24 14:02:11' }} 
+          onViewChange={setCurrentView}
+        />;
     }
   };
 

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CCNA AI Tutor - Study Lab &amp; Notes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#dbc1b9",
+                        "surface-tint": "#ffb59e",
+                        "outline-variant": "#55433d",
+                        "inverse-on-surface": "#31302e",
+                        "surface-container-high": "#2a2a28",
+                        "error": "#ffb4ab",
+                        "secondary-fixed": "#e6e2d8",
+                        "primary-fixed-dim": "#ffb59e",
+                        "surface-dim": "#131312",
+                        "inverse-surface": "#e5e2df",
+                        "tertiary-fixed": "#7df7e3",
+                        "outline": "#a38c85",
+                        "tertiary-container": "#09a493",
+                        "on-primary-fixed": "#390b00",
+                        "on-tertiary": "#003731",
+                        "on-surface": "#e5e2df",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#00312b",
+                        "on-primary-container": "#541400",
+                        "tertiary-fixed-dim": "#5edac7",
+                        "on-secondary-fixed-variant": "#48473f",
+                        "on-secondary": "#31312a",
+                        "on-background": "#e5e2df",
+                        "tertiary": "#5edac7",
+                        "surface-bright": "#393937",
+                        "on-error-container": "#ffdad6",
+                        "secondary-container": "#48473f",
+                        "surface-variant": "#353533",
+                        "secondary": "#c9c6bc",
+                        "on-tertiary-fixed": "#00201c",
+                        "surface": "#131312",
+                        "inverse-primary": "#99462a",
+                        "surface-container": "#20201e",
+                        "primary-container": "#d97757",
+                        "surface-container-lowest": "#0e0e0d",
+                        "background": "#131312",
+                        "surface-container-low": "#1c1c1a",
+                        "on-secondary-fixed": "#1c1c15",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#005047",
+                        "surface-container-highest": "#353533",
+                        "on-primary-fixed-variant": "#7a2f15",
+                        "primary": "#ffb59e",
+                        "secondary-fixed-dim": "#c9c6bc",
+                        "on-secondary-container": "#b8b5ab",
+                        "on-primary": "#5c1902",
+                        "primary-fixed": "#ffdbd0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #1c1c1a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2a2a28;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<!-- SideNavBar (Left) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col h-screen w-64 border-r-0 bg-[#131312] z-50">
+<div class="p-6">
+<h1 class="text-xl font-bold tracking-tighter text-[#ffb59e] font-headline">CCNA AI Tutor</h1>
+<p class="text-[10px] uppercase tracking-widest text-secondary opacity-50 mt-1">Technical Monolith</p>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 text-[#c3c0b6] opacity-60 font-headline text-sm tracking-tight hover:bg-[#20201e] hover:text-[#ffb59e] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-[#c3c0b6] opacity-60 font-headline text-sm tracking-tight hover:bg-[#20201e] hover:text-[#ffb59e] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span>Modules</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-[#c3c0b6] opacity-60 font-headline text-sm tracking-tight hover:bg-[#20201e] hover:text-[#ffb59e] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span>Simulations</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-[#c3c0b6] opacity-60 font-headline text-sm tracking-tight hover:bg-[#20201e] hover:text-[#ffb59e] transition-colors cursor-pointer group">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span>Network Maps</span>
+</div>
+<!-- Active Tab -->
+<div class="flex items-center gap-3 px-3 py-2 text-[#ffb59e] font-bold bg-[#1c1c1a] font-headline text-sm tracking-tight transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span>Study Lab</span>
+</div>
+</nav>
+<div class="p-4 mt-auto border-t border-outline-variant/10">
+<div class="flex items-center gap-3 px-3 py-2 text-[#c3c0b6] opacity-60 font-headline text-sm tracking-tight hover:bg-[#20201e] hover:text-[#ffb59e] transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-[#c3c0b6] opacity-60 font-headline text-sm tracking-tight hover:bg-[#20201e] hover:text-[#ffb59e] transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help</span>
+</div>
+<div class="mt-4 flex items-center gap-3 px-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpTbGDIRLarcZtkDjLHTLtKagdEbWYumKOBuQdpzKZ7K9V8DqAee2-orSD7b6KzOW1zMtHsVX2s5VHWXygpntXJBpzLiHb3EKv7fVyAdYdsn8cKxYQWFPrG8TjCJyETCRWDPIljcG21mNaVuUjFb-FpEjy5QU9mKQexCSsLq0XUEMKwjXeQSXmsSr9yIFAEA0JUj7F4pkdwFSdFv4uxj7IIMNgfkxgug8Znn0avv1RqWQVydjMP4OaAIkXyro6P9xoX2eUlgE9boc"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-on-surface">Admin_Root</span>
+<span class="text-[10px] text-primary opacity-70">L3 Engineer</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="fixed top-0 right-0 left-64 flex justify-between items-center px-8 z-40 bg-[#131312]/80 backdrop-blur-xl h-16">
+<div class="flex items-center gap-8 font-headline font-medium">
+<div class="flex items-center gap-6">
+<span class="text-[#ffb59e] border-b-2 border-[#ffb59e] pb-1 cursor-pointer">Theory</span>
+<span class="text-[#c3c0b6] opacity-70 hover:text-[#ffb59e] transition-opacity cursor-pointer">Documentation</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border-none text-xs px-4 py-2 w-64 focus:ring-1 focus:ring-primary-container text-on-surface" placeholder="Search commands..." type="text"/>
+<span class="absolute right-3 top-2 text-on-surface-variant material-symbols-outlined text-sm" data-icon="search">search</span>
+</div>
+<div class="flex items-center gap-4 text-[#ffb59e]">
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70 transition-opacity" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:opacity-70 transition-opacity" data-icon="history_edu">history_edu</span>
+<div class="h-8 w-[1px] bg-outline-variant/30"></div>
+<span class="text-sm font-headline cursor-pointer active:opacity-50">Profile</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mr-72 pt-16 h-screen overflow-y-auto custom-scrollbar bg-surface">
+<div class="p-8 max-w-5xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12">
+<h2 class="text-4xl font-headline font-bold tracking-tight text-on-surface mb-2">Study Lab</h2>
+<div class="h-1 w-12 bg-primary-container"></div>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Active Highlighting Demo Section (Visual Demonstration) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-low p-8 relative overflow-visible">
+<div class="flex justify-between items-start mb-6">
+<span class="text-[10px] font-headline uppercase tracking-[0.2em] text-primary">Contextual Analysis</span>
+<span class="material-symbols-outlined text-primary text-lg" data-icon="lightbulb">lightbulb</span>
+</div>
+<div class="space-y-4">
+<h3 class="text-xl font-headline font-semibold text-on-surface">OSPF Routing Fundamentals</h3>
+<p class="text-secondary leading-relaxed text-sm">
+                            Open Shortest Path First (OSPF) is a link-state routing protocol that was developed for IP networks and is based on the Shortest Path First (SPF) algorithm. OSPF is an Interior Gateway Protocol (IGP). In an OSPF network, routers or systems in the same area maintain an identical <span class="bg-primary/20 text-primary px-1 border-b border-primary relative cursor-default group">link-state database
+                                <!-- Context Menu -->
+<span class="absolute top-full left-0 mt-2 w-48 bg-surface-container-highest border border-outline-variant/20 shadow-2xl z-50 p-1 flex flex-col gap-0.5 rounded-sm backdrop-blur-md">
+<button class="flex items-center gap-3 px-3 py-2 text-xs font-headline text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-all text-left">
+<span class="material-symbols-outlined text-sm" data-icon="bookmark">bookmark</span>
+                                        Add to Bookmarks
+                                    </button>
+<button class="flex items-center gap-3 px-3 py-2 text-xs font-headline text-on-surface hover:bg-surface-container transition-all text-left">
+<span class="material-symbols-outlined text-sm" data-icon="note_add">note_add</span>
+                                        Create Note
+                                    </button>
+</span>
+</span> which describes the topology of the area.
+                        </p>
+<div class="bg-surface-container-lowest p-4 rounded font-mono text-[11px] text-tertiary-fixed-dim">
+<div class="flex gap-2">
+<span class="opacity-30">01</span>
+<span>Router(config)# router ospf 1</span>
+</div>
+<div class="flex gap-2">
+<span class="opacity-30">02</span>
+<span>Router(config-router)# network 192.168.1.0 0.0.0.255 area 0</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Coming Soon: Theory -->
+<div class="col-span-12 lg:col-span-4 group">
+<div class="h-full bg-surface-container p-8 flex flex-col justify-between border-t-2 border-transparent hover:border-primary-container transition-all">
+<div>
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="menu_book">menu_book</span>
+<span class="text-[9px] font-headline bg-primary-container/20 text-primary-container px-2 py-0.5 tracking-tighter">PHASE_02</span>
+</div>
+<h3 class="text-lg font-headline font-medium text-on-surface">Theory Engine</h3>
+<p class="text-xs text-secondary opacity-60 mt-2 font-light">Advanced AI synthesis of theoretical network architectures and RFC documentation.</p>
+</div>
+<div class="mt-8 flex items-center gap-2">
+<span class="text-[10px] font-headline font-bold text-primary-container tracking-widest uppercase">Coming Soon</span>
+<div class="flex-1 h-[1px] bg-outline-variant/30"></div>
+</div>
+</div>
+</div>
+<!-- Coming Soon: Documentation -->
+<div class="col-span-12 lg:col-span-12">
+<div class="bg-surface-container-low p-12 flex flex-col items-center justify-center text-center relative overflow-hidden">
+<!-- Decorative glow -->
+<div class="absolute -bottom-24 -right-24 w-64 h-64 bg-primary-container/5 blur-[100px] rounded-full"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl text-outline mb-4 block" data-icon="folder_managed">folder_managed</span>
+<h3 class="text-2xl font-headline font-bold text-on-surface mb-2">Technical Documentation Vault</h3>
+<p class="text-secondary max-w-md mx-auto text-sm">Our comprehensive repository of Cisco IOS references and industry standards is currently being indexed by our AI core.</p>
+<div class="mt-8 inline-flex items-center gap-4 bg-surface-container-high px-6 py-3 rounded-sm">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border border-surface bg-surface-container flex items-center justify-center text-[8px]">RFC</div>
+<div class="w-6 h-6 rounded-full border border-surface bg-primary-container flex items-center justify-center text-[8px] text-on-primary-container">IOS</div>
+<div class="w-6 h-6 rounded-full border border-surface bg-tertiary-container flex items-center justify-center text-[8px] text-on-tertiary-container">L3</div>
+</div>
+<span class="text-[10px] font-headline font-bold tracking-widest text-primary uppercase">Synchronization in Progress</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- SideNavBar (Right - Personal Reference) -->
+<aside class="fixed right-0 top-0 h-full flex flex-col pt-16 w-72 border-l-0 bg-[#1c1c1a] z-30">
+<div class="p-6">
+<h2 class="text-xs font-bold text-[#d97757] font-headline uppercase tracking-widest">Reference</h2>
+<p class="text-[10px] text-secondary opacity-40 font-['Inter'] uppercase tracking-widest mt-1">Quick Access</p>
+</div>
+<nav class="px-4 flex gap-2 mb-6">
+<div class="flex-1 flex flex-col items-center gap-1 p-2 text-[#ffb59e] bg-[#2a2a28] rounded-sm cursor-pointer transition-all duration-300">
+<span class="material-symbols-outlined text-sm" data-icon="bookmark" style="font-variation-settings: 'FILL' 1;">bookmark</span>
+<span class="text-[9px] font-['Inter'] uppercase tracking-widest">Bookmarks</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1 p-2 text-[#c3c0b6] opacity-40 hover:bg-[#2a2a28] transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined text-sm" data-icon="sticky_note_2">sticky_note_2</span>
+<span class="text-[9px] font-['Inter'] uppercase tracking-widest">Notes</span>
+</div>
+</nav>
+<div class="flex-1 overflow-y-auto px-4 space-y-4 custom-scrollbar pb-8">
+<!-- Bookmark Item -->
+<div class="bg-[#20201e] p-4 group cursor-pointer hover:bg-[#2a2a28] transition-colors border-l-2 border-primary-container">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] text-primary-container font-headline font-bold">OSPF AREA TYPES</span>
+<span class="material-symbols-outlined text-xs opacity-30 group-hover:opacity-100" data-icon="open_in_new">open_in_new</span>
+</div>
+<p class="text-xs text-secondary leading-relaxed line-clamp-3">"Stub areas do not allow AS External LSAs (Type 5) to be flooded within the area..."</p>
+<div class="mt-3 flex items-center justify-between text-[9px] text-on-surface-variant/40 italic">
+<span>Source: Module 04-B</span>
+<span>12m ago</span>
+</div>
+</div>
+<!-- Bookmark Item -->
+<div class="bg-[#20201e] p-4 group cursor-pointer hover:bg-[#2a2a28] transition-colors border-l-2 border-transparent">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] text-secondary font-headline font-bold">NAT OVERLOAD</span>
+<span class="material-symbols-outlined text-xs opacity-30 group-hover:opacity-100" data-icon="open_in_new">open_in_new</span>
+</div>
+<p class="text-xs text-secondary leading-relaxed line-clamp-3">"PAT uses unique source port numbers on the Inside Global IP address to distinguish..."</p>
+<div class="mt-3 flex items-center justify-between text-[9px] text-on-surface-variant/40 italic">
+<span>Source: Documentation</span>
+<span>2h ago</span>
+</div>
+</div>
+<!-- Bookmark Item -->
+<div class="bg-[#20201e] p-4 group cursor-pointer hover:bg-[#2a2a28] transition-colors border-l-2 border-transparent">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] text-secondary font-headline font-bold">STP TIMERS</span>
+<span class="material-symbols-outlined text-xs opacity-30 group-hover:opacity-100" data-icon="open_in_new">open_in_new</span>
+</div>
+<p class="text-xs text-secondary leading-relaxed line-clamp-3">"Default Hello timer is 2 seconds, Forward Delay is 15 seconds, and Max Age is 20 seconds."</p>
+<div class="mt-3 flex items-center justify-between text-[9px] text-on-surface-variant/40 italic">
+<span>Source: Simulations</span>
+<span>Yesterday</span>
+</div>
+</div>
+<!-- Active Notes Placeholder -->
+<div class="pt-4 mt-4 border-t border-outline-variant/10">
+<h3 class="text-[9px] uppercase tracking-widest text-on-surface-variant/40 font-headline mb-3">Active Notes (2)</h3>
+<div class="space-y-3">
+<div class="flex items-start gap-3 p-2 hover:bg-[#2a2a28] transition-all cursor-pointer">
+<div class="mt-1 w-1.5 h-1.5 rounded-full bg-tertiary"></div>
+<div class="flex-1">
+<div class="text-[11px] font-medium text-on-surface truncate">VLAN Trunking Protocol checklist</div>
+<div class="text-[9px] text-secondary opacity-50">Last edit 4h ago</div>
+</div>
+</div>
+<div class="flex items-start gap-3 p-2 hover:bg-[#2a2a28] transition-all cursor-pointer">
+<div class="mt-1 w-1.5 h-1.5 rounded-full bg-primary-container"></div>
+<div class="flex-1">
+<div class="text-[11px] font-medium text-on-surface truncate">Subnetting short-cuts for Exam</div>
+<div class="text-[9px] text-secondary opacity-50">Last edit 1d ago</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-[#131312]">
+<button class="w-full py-3 bg-primary-container text-on-primary-container text-[10px] font-headline font-bold uppercase tracking-widest flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+                New Quick Note
+            </button>
+</div>
+</aside>
+</body></html>

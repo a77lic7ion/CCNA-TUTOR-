@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Technical Monolith | Lab Player</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ffb4ab",
+                      "primary-fixed-dim": "#ffb59e",
+                      "inverse-on-surface": "#31302e",
+                      "tertiary": "#5edac7",
+                      "secondary-fixed-dim": "#c9c6bc",
+                      "tertiary-container": "#09a493",
+                      "on-tertiary-fixed-variant": "#005047",
+                      "surface-container": "#20201e",
+                      "on-tertiary": "#003731",
+                      "on-primary-fixed": "#390b00",
+                      "on-surface": "#e5e2df",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#a38c85",
+                      "on-secondary-container": "#b8b5ab",
+                      "on-surface-variant": "#dbc1b9",
+                      "on-secondary-fixed-variant": "#48473f",
+                      "surface-tint": "#ffb59e",
+                      "tertiary-fixed-dim": "#5edac7",
+                      "surface-container-low": "#1c1c1a",
+                      "primary": "#ffb59e",
+                      "secondary-container": "#48473f",
+                      "secondary": "#c9c6bc",
+                      "outline-variant": "#55433d",
+                      "tertiary-fixed": "#7df7e3",
+                      "on-background": "#e5e2df",
+                      "on-primary-fixed-variant": "#7a2f15",
+                      "on-tertiary-fixed": "#00201c",
+                      "secondary-fixed": "#e6e2d8",
+                      "on-primary-container": "#541400",
+                      "inverse-surface": "#e5e2df",
+                      "surface-bright": "#393937",
+                      "surface-dim": "#131312",
+                      "on-tertiary-container": "#00312b",
+                      "on-secondary-fixed": "#1c1c15",
+                      "error-container": "#93000a",
+                      "surface-container-high": "#2a2a28",
+                      "primary-container": "#d97757",
+                      "background": "#131312",
+                      "surface": "#131312",
+                      "surface-container-lowest": "#0e0e0d",
+                      "on-secondary": "#31312a",
+                      "on-primary": "#5c1902",
+                      "surface-container-highest": "#353533",
+                      "on-error": "#690005",
+                      "surface-variant": "#353533",
+                      "primary-fixed": "#ffdbd0",
+                      "inverse-primary": "#99462a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Inter"],
+                      "mono": ["JetBrains Mono"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cli-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 1.2rem;
+            background-color: #ffb59e;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #131312;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2a2a28;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- SideNavBar (Execution from JSON) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col h-screen w-64 border-r-0 bg-[#131312] font-space-grotesk tracking-tight">
+<div class="p-6">
+<h1 class="text-xl font-bold tracking-tighter text-[#ffb59e] uppercase">CCNA TUTOR</h1>
+<p class="text-[10px] opacity-40 tracking-widest mt-1">MONOLITH V1.0</p>
+</div>
+<nav class="flex-1 mt-4">
+<div class="space-y-1">
+<!-- Active Tab: Simulations -->
+<a class="flex items-center px-6 py-3 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="terminal">terminal</span>
+<span class="text-sm">Modules</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#ffb59e] border-l-4 border-[#d97757] bg-[#1c1c1a] font-bold" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="hub" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="text-sm">Simulations</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="map">map</span>
+<span class="text-sm">Network Maps</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="biotech">biotech</span>
+<span class="text-sm">Study Lab</span>
+</a>
+</div>
+</nav>
+<div class="p-4">
+<button class="w-full bg-primary-container text-on-primary-container py-3 font-bold text-xs uppercase tracking-widest rounded-lg hover:brightness-110 transition-all active:scale-95">
+                Start Lab
+            </button>
+</div>
+<div class="border-t border-outline-variant/10 pt-4 pb-8">
+<a class="flex items-center px-6 py-2 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="text-xs">Settings</span>
+</a>
+<a class="flex items-center px-6 py-2 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="help_center">help_center</span>
+<span class="text-xs">Support</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar (Execution from JSON) -->
+<header class="flex justify-between items-center h-16 ml-64 px-8 w-[calc(100%-16rem)] bg-[#131312] font-space-grotesk fixed top-0 z-10">
+<div class="flex items-center gap-8">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline text-sm" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none text-xs pl-10 pr-4 py-2 w-64 rounded-lg focus:ring-1 focus:ring-primary/30" placeholder="Search knowledge base..." type="text"/>
+</div>
+<nav class="flex gap-6">
+<a class="text-[#c3c0b6] opacity-70 hover:text-[#ffb59e] transition-all text-xs font-medium tracking-widest uppercase" href="#">CLI</a>
+<a class="text-[#ffb59e] border-b-2 border-[#d97757] pb-1 text-xs font-medium tracking-widest uppercase" href="#">Topology</a>
+<a class="text-[#c3c0b6] opacity-70 hover:text-[#ffb59e] transition-all text-xs font-medium tracking-widest uppercase" href="#">Theory</a>
+<a class="text-[#c3c0b6] opacity-70 hover:text-[#ffb59e] transition-all text-xs font-medium tracking-widest uppercase" href="#">Notes</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="lan">lan</span>
+</div>
+<button class="bg-outline-variant/20 hover:bg-outline-variant/40 text-primary px-4 py-1.5 text-xs font-bold rounded-lg transition-all">
+                End Session
+            </button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/30">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="close-up portrait of a tech professional in a low-lit server room with blue ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiHaQ3OUBGkHUHp0PrvwmUUHcY37IQhB1nrfRnct4PDAOIdt5KkOfo7eS77ERqCCeXyWBK3Gsf4wA0AkbgJBBefm72jANVrSlEcSxIrJ2SWq0-Th1FsHKcFIRsD3Pc_cddwR0-Mfbs3-ZxGBYZg6mPn1-M1a4eu-upG4m8tGuuNe319MlmbCrwEAHZikARUPwlASQCcIA4dRYtO2JIuqKiX37nCztrgBkj5hQ2cKUujwHSTqYWsKpRk4RkzXnqkSJnWK-Gm7QVcVg"/>
+</div>
+</div>
+</header>
+<!-- Main Content Shell -->
+<main class="ml-64 pt-16 h-screen flex overflow-hidden">
+<!-- Left Pane: Topology Diagram (The Canvas) -->
+<section class="flex-1 bg-surface-container-low relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#ffb59e 1px, transparent 1px); background-size: 32px 32px;"></div>
+<!-- Topology Header Status -->
+<div class="absolute top-6 left-6 flex gap-4 z-10">
+<div class="bg-surface-container-high px-4 py-2 rounded-lg flex items-center gap-3 backdrop-blur-md">
+<div class="w-2 h-2 rounded-full bg-tertiary shadow-[0_0_8px_#5edac7]"></div>
+<span class="text-[10px] font-mono uppercase tracking-tighter">System: Operational</span>
+</div>
+<div class="bg-surface-container-high px-4 py-2 rounded-lg flex items-center gap-3 backdrop-blur-md">
+<span class="text-[10px] font-mono uppercase tracking-tighter text-on-surface-variant">Lab ID: STP-ROOT-04</span>
+</div>
+</div>
+<!-- Zoom/Tool Controls -->
+<div class="absolute bottom-6 left-6 flex flex-col gap-2 z-10">
+<button class="w-10 h-10 bg-surface-container-highest flex items-center justify-center rounded-lg hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-highest flex items-center justify-center rounded-lg hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+</button>
+<button class="w-10 h-10 bg-surface-container-highest flex items-center justify-center rounded-lg hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_center_focus">filter_center_focus</span>
+</button>
+</div>
+<!-- Actual Network Topology Visualization (Interactive Area) -->
+<div class="w-full h-full flex items-center justify-center">
+<div class="relative w-[600px] h-[400px]">
+<!-- Connection Lines -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none">
+<line stroke="#a38c85" stroke-dasharray="4" stroke-width="1.5" x1="300" x2="150" y1="100" y2="300"></line>
+<line stroke="#a38c85" stroke-dasharray="4" stroke-width="1.5" x1="300" x2="450" y1="100" y2="300"></line>
+<line stroke="#ffb59e" stroke-width="2" x1="150" x2="450" y1="300" y2="300"></line>
+</svg>
+<!-- Router R1 -->
+<div class="absolute top-[10%] left-[calc(50%-40px)] group cursor-pointer">
+<div class="bg-surface-container-highest p-4 rounded-lg border border-transparent group-hover:border-primary transition-all duration-300">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="router" style="font-variation-settings: 'wght' 200;">router</span>
+</div>
+<div class="mt-2 text-center">
+<p class="text-[10px] font-mono font-bold">R1-CORE</p>
+<p class="text-[8px] font-mono text-tertiary">192.168.1.1</p>
+</div>
+</div>
+<!-- Switch SW1 -->
+<div class="absolute bottom-[10%] left-[10%] group cursor-pointer">
+<div class="bg-surface-container-highest p-4 rounded-lg border border-primary/50 shadow-[0_0_15px_rgba(217,119,87,0.15)] group-hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="settings_input_component" style="font-variation-settings: 'wght' 200;">settings_input_component</span>
+</div>
+<div class="mt-2 text-center">
+<p class="text-[10px] font-mono font-bold">SW1-DIST</p>
+<p class="text-[8px] font-mono text-on-surface-variant">FA0/1 - FA0/24</p>
+</div>
+</div>
+<!-- Switch SW2 -->
+<div class="absolute bottom-[10%] right-[10%] group cursor-pointer">
+<div class="bg-surface-container-highest p-4 rounded-lg border border-transparent group-hover:border-primary transition-all">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="settings_input_component" style="font-variation-settings: 'wght' 200;">settings_input_component</span>
+</div>
+<div class="mt-2 text-center">
+<p class="text-[10px] font-mono font-bold">SW2-ACCESS</p>
+<p class="text-[8px] font-mono text-on-surface-variant">FA0/1 - FA0/24</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Tasks & CLI -->
+<section class="w-[480px] bg-surface flex flex-col border-l border-outline-variant/10">
+<!-- Task Header -->
+<div class="p-6 bg-surface-container-low border-b border-outline-variant/10">
+<h2 class="font-headline text-lg font-bold tracking-tight uppercase">Module Lab: STP Root Selection</h2>
+<div class="mt-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-24 h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-1/3 bg-primary"></div>
+</div>
+<span class="text-[10px] font-mono text-on-surface-variant">33% COMPLETED</span>
+</div>
+<span class="text-[10px] bg-tertiary/10 text-tertiary px-2 py-0.5 rounded font-mono">EST: 15 MIN</span>
+</div>
+</div>
+<!-- Task List -->
+<div class="flex-1 overflow-y-auto p-6 custom-scrollbar">
+<h3 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-4">Current Objectives</h3>
+<div class="space-y-4">
+<!-- Completed Task -->
+<div class="bg-surface-container p-4 rounded-lg flex gap-4 opacity-50">
+<span class="material-symbols-outlined text-tertiary text-xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="text-sm font-medium line-through">Configure Hostnames on all devices</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Set R1, SW1, and SW2 identifying labels.</p>
+</div>
+</div>
+<!-- Active Task -->
+<div class="bg-surface-container-high p-5 rounded-lg flex gap-4 border-l-4 border-primary shadow-lg">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="radio_button_checked">radio_button_checked</span>
+<div>
+<p class="text-sm font-bold">Configure SW1 as the root bridge</p>
+<p class="text-[11px] text-on-surface-variant mt-2 leading-relaxed">
+                                Use the <code class="bg-surface-container-lowest px-1 rounded text-primary">spanning-tree vlan 1 priority</code> command to ensure SW1 always wins the election.
+                            </p>
+<div class="mt-4 flex gap-2">
+<button class="text-[10px] text-primary flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm" data-icon="lightbulb">lightbulb</span> Show Documentation
+                                </button>
+</div>
+</div>
+</div>
+<!-- Upcoming Task -->
+<div class="bg-surface-container p-4 rounded-lg flex gap-4">
+<span class="material-symbols-outlined text-outline text-xl" data-icon="radio_button_unchecked">radio_button_unchecked</span>
+<div>
+<p class="text-sm font-medium text-on-surface-variant">Verify STP Topology convergence</p>
+<p class="text-[10px] text-outline mt-1">Ensure ports transition from learning to forwarding.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- CLI Mock Terminal -->
+<div class="bg-surface-container-lowest h-72 flex flex-col">
+<div class="flex items-center justify-between px-4 py-2 bg-surface-container-high">
+<div class="flex gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-error/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-tertiary/40"></div>
+</div>
+<span class="text-[10px] font-mono text-outline uppercase tracking-widest">CLI Terminal: SW1-DIST</span>
+<span class="material-symbols-outlined text-sm text-outline cursor-pointer" data-icon="open_in_full">open_in_full</span>
+</div>
+<div class="flex-1 p-4 font-mono text-xs overflow-y-auto custom-scrollbar">
+<p class="text-on-surface-variant opacity-50 mb-1">Cisco IOS Software, C2960 Software (C2960-LANBASE-M), Version 12.2(25)FX, RELEASE SOFTWARE (fc1)</p>
+<p class="text-on-surface-variant opacity-50 mb-4">Copyright (c) 1986-2005 by Cisco Systems, Inc.</p>
+<div class="space-y-1">
+<p>SW1-DIST&gt; enable</p>
+<p>SW1-DIST# configure terminal</p>
+<p class="text-on-surface-variant italic opacity-60">Enter configuration commands, one per line.  End with CNTL/Z.</p>
+<div class="flex items-center">
+<span class="text-primary mr-2">SW1-DIST(config)#</span>
+<span class="cli-cursor"></span>
+</div>
+</div>
+</div>
+<!-- CLI Input -->
+<div class="p-4 border-t border-outline-variant/10 flex gap-3 bg-surface-container-low">
+<div class="flex-1 relative">
+<input class="w-full bg-surface-container-lowest border-none text-xs font-mono text-primary placeholder:text-outline/30 focus:ring-1 focus:ring-primary/40 rounded-lg py-3 px-4" placeholder="Enter IOS command..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-tertiary hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+</button>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 text-xs font-bold uppercase tracking-widest rounded-lg hover:brightness-110 active:scale-95 transition-all">
+                        Run
+                    </button>
+<button class="bg-surface-container-high text-on-surface-variant w-12 flex items-center justify-center rounded-lg hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual FAB (Suppressed on Details Screens - but kept small if relevant) -->
+<!-- Suppression logic: On this specific task page, the "Run" button is the primary action, so we suppress global FAB to focus on the CLI. -->
+</body></html>

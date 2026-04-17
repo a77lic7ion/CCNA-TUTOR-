@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Network Topology Gallery | CCNA AI TUTOR</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#00312b",
+                      "on-secondary-container": "#b8b5ab",
+                      "primary-container": "#d97757",
+                      "on-surface-variant": "#dbc1b9",
+                      "inverse-primary": "#99462a",
+                      "on-secondary": "#31312a",
+                      "outline-variant": "#55433d",
+                      "on-primary-fixed": "#390b00",
+                      "inverse-surface": "#e5e2df",
+                      "surface": "#131312",
+                      "on-tertiary-fixed-variant": "#005047",
+                      "on-secondary-fixed-variant": "#48473f",
+                      "surface-container-high": "#2a2a28",
+                      "secondary-fixed-dim": "#c9c6bc",
+                      "secondary": "#c9c6bc",
+                      "surface-variant": "#353533",
+                      "on-background": "#e5e2df",
+                      "surface-dim": "#131312",
+                      "surface-container": "#20201e",
+                      "secondary-container": "#48473f",
+                      "surface-tint": "#ffb59e",
+                      "inverse-on-surface": "#31302e",
+                      "on-primary": "#5c1902",
+                      "tertiary-container": "#09a493",
+                      "error-container": "#93000a",
+                      "on-error": "#690005",
+                      "secondary-fixed": "#e6e2d8",
+                      "on-tertiary-fixed": "#00201c",
+                      "surface-bright": "#393937",
+                      "background": "#131312",
+                      "on-surface": "#e5e2df",
+                      "tertiary": "#5edac7",
+                      "surface-container-low": "#1c1c1a",
+                      "outline": "#a38c85",
+                      "surface-container-highest": "#353533",
+                      "error": "#ffb4ab",
+                      "primary-fixed": "#ffdbd0",
+                      "primary": "#ffb59e",
+                      "on-secondary-fixed": "#1c1c15",
+                      "on-primary-container": "#541400",
+                      "on-tertiary": "#003731",
+                      "primary-fixed-dim": "#ffb59e",
+                      "tertiary-fixed": "#7df7e3",
+                      "on-error-container": "#ffdad6",
+                      "on-primary-fixed-variant": "#7a2f15",
+                      "surface-container-lowest": "#0e0e0d",
+                      "tertiary-fixed-dim": "#5edac7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Inter"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .cli-glow { box-shadow: 0px 0px 15px rgba(217, 119, 87, 0.15); }
+        .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.5rem; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<div class="flex min-h-screen overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen p-6 space-y-8 bg-[#131312] w-64 border-r border-surface-container-highest">
+<div class="flex flex-col space-y-2 mb-4">
+<span class="text-xs font-headline uppercase tracking-[0.2em] text-primary opacity-60">Authentication</span>
+<div class="flex items-center gap-3 p-2">
+<div class="w-10 h-10 bg-surface-container-high rounded-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<div>
+<p class="font-headline font-bold text-sm uppercase tracking-widest text-[#ffb59e]">Network Engineer</p>
+<p class="text-[10px] text-on-secondary-container tracking-tighter uppercase opacity-70">Level 4 Access</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col space-y-2">
+<a class="flex items-center gap-4 px-4 py-3 text-[#c3c0b6] hover:bg-[#2a2a28] transition-colors duration-300 font-headline text-sm uppercase tracking-widest cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#c3c0b6] hover:bg-[#2a2a28] transition-colors duration-300 font-headline text-sm uppercase tracking-widest cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+                    Modules
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#c3c0b6] hover:bg-[#2a2a28] transition-colors duration-300 font-headline text-sm uppercase tracking-widest cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">terminal</span>
+                    Simulations
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 bg-[#d97757] text-[#131312] font-bold rounded-sm font-headline text-sm uppercase tracking-widest cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">hub</span>
+                    Network Maps
+                </a>
+<a class="flex items-center gap-4 px-4 py-3 text-[#c3c0b6] hover:bg-[#2a2a28] transition-colors duration-300 font-headline text-sm uppercase tracking-widest cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">biotech</span>
+                    Study Lab
+                </a>
+</nav>
+<div class="pt-8 flex flex-col space-y-2 border-t border-surface-container-high">
+<a class="flex items-center gap-4 px-4 py-2 text-[#c3c0b6] hover:bg-[#2a2a28] transition-colors duration-300 font-headline text-sm uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">description</span>
+                    Documentation
+                </a>
+<a class="flex items-center gap-4 px-4 py-2 text-[#c3c0b6] hover:bg-[#2a2a28] transition-colors duration-300 font-headline text-sm uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">help</span>
+                    Support
+                </a>
+<button class="mt-4 w-full bg-surface-container-high text-primary font-headline text-[10px] tracking-widest uppercase py-3 rounded-sm border border-primary/20 hover:bg-primary/10 transition-all">
+                    Launch Mock CLI
+                </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col overflow-hidden bg-surface">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-8 py-4 bg-[#131312] border-none font-['Space_Grotesk'] tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#ffb59e] uppercase">CCNA AI TUTOR</span>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-[#c3c0b6] opacity-70 hover:text-[#ffb59e] hover:opacity-100 transition-all scale-95 active:duration-100" href="#">CLI</a>
+<a class="text-[#ffb59e] border-b-2 border-[#d97757] pb-1 hover:text-[#ffb59e] hover:opacity-100 transition-all scale-95 active:duration-100" href="#">Topology</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-surface-container-low border-none text-[10px] tracking-widest uppercase py-2 pl-10 pr-4 w-64 focus:ring-1 focus:ring-primary-container" placeholder="SEARCH LABS..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#c3c0b6] cursor-pointer hover:text-[#ffb59e]">notifications</span>
+<span class="material-symbols-outlined text-[#c3c0b6] cursor-pointer hover:text-[#ffb59e]">settings</span>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-sm font-bold uppercase text-[10px] tracking-widest scale-95 active:duration-100 transition-all">End Session</button>
+</div>
+</div>
+</header>
+<!-- Scrollable Area -->
+<div class="flex-1 overflow-y-auto p-8 space-y-12">
+<!-- Hero Section / Context -->
+<section class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-end gap-8">
+<div class="space-y-4 max-w-2xl">
+<h1 class="text-5xl font-headline font-bold text-on-surface tracking-tighter leading-none">
+                            NETWORK <span class="text-primary">TOPOLOGY</span> GALLERY
+                        </h1>
+<p class="text-on-surface-variant font-light text-lg">
+                            Access high-fidelity lab environments. Practice configuration and troubleshooting on real-world simulated network architectures.
+                        </p>
+</div>
+<!-- Filters -->
+<div class="flex items-center gap-4 bg-surface-container-low p-2 rounded-lg">
+<button class="px-4 py-2 bg-primary-container text-on-primary-container text-[10px] font-bold uppercase tracking-widest rounded-sm">All Labs</button>
+<button class="px-4 py-2 text-on-surface-variant text-[10px] font-bold uppercase tracking-widest rounded-sm hover:bg-surface-container-high transition-colors">New</button>
+<button class="px-4 py-2 text-on-surface-variant text-[10px] font-bold uppercase tracking-widest rounded-sm hover:bg-surface-container-high transition-colors">Completed</button>
+</div>
+</section>
+<!-- Domain 1.0 - 2.0 Bento Grid -->
+<section class="max-w-7xl mx-auto space-y-6">
+<div class="flex items-center gap-4">
+<h2 class="text-xs font-headline font-bold tracking-[0.3em] uppercase text-primary">Domain 1.0 - 2.0: Network Fundamentals &amp; Switching</h2>
+<div class="h-[1px] flex-1 bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Lab Card 1: VLAN Trunking -->
+<div class="group bg-surface-container-low p-6 transition-all duration-300 hover:bg-surface-container-high flex flex-col space-y-6">
+<div class="aspect-video w-full bg-surface-container-highest relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity" data-alt="Technical network diagram showing three Cisco switches interconnected with tagged VLAN trunk links and terminal hosts in various VLANs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwEAPvWa4qFxtjTBslW0XMxgpu6FAAJeG_G2Ncp5khM2p_WGxPT_uy_JnW7sYt0Y1fkeYpyTNqXFuI7BFfmvqL7C_XR106NRmZOP8D0rePclGaFkWIOiQtbHpmrHIPGNnyCNAgWuwqEGQZ1dFFcJJpNEHh8kWgj0ZaAZnV8nNrFxi2u2E1CUxgCN1vvCzeLKlk-qtX8QuABnR5IZp0l5H0H0D7vUuRVlY7P3HP04M21SP0nsntJYmL2LW5DqAZaA8fljpRUrTpFG0"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1 text-[9px] font-bold tracking-widest uppercase text-tertiary">New</span>
+<span class="bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1 text-[9px] font-bold tracking-widest uppercase text-on-surface-variant">Lvl 2</span>
+</div>
+</div>
+<div class="space-y-2">
+<h3 class="text-xl font-headline font-bold tracking-tight text-on-surface">VLAN Trunking &amp; 802.1Q</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">Configure inter-switch trunks and verify frame tagging across a multi-switch campus network.</p>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container-highest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-lg">schedule</span>
+<span class="text-[10px] font-headline tracking-widest uppercase">25 Mins</span>
+</div>
+<button class="group/btn flex items-center gap-2 text-primary font-bold uppercase text-[10px] tracking-widest hover:text-primary-container transition-colors">
+                                    Launch Lab <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Lab Card 2: STP Root Election -->
+<div class="group bg-surface-container-low p-6 transition-all duration-300 hover:bg-surface-container-high flex flex-col space-y-6">
+<div class="aspect-video w-full bg-surface-container-highest relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity" data-alt="Abstract schematic of four network switches arranged in a loop with ports highlighted in green and amber for STP states" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt-V0ZONv5UOInkG1EtZ4a3ouu4qWeV6OssBkLnHGtVulFfX8v4V2wh-0x5D17VFTd6inQ14MPVEjIUEsAeC02R5DLTny4LHgMb4TJcRZ_VFX4hqAAOu8bplIT17C1T1wh7-GLRPu7EZsEGP4lUuNUVkWWjl6nSbrsT-bfdYlifOiNfvWGREgY5rXYi8DTo3eMnEPDBuYLRDJBqF8xDAJzGs3T-XIHL9kHMrM_dEjc714BJvZjfWr4OhZ6x7_pHnb4Fs1p9jU1jbU"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-surface-container-lowest/80 backdrop-blur-md px-3 py-1 text-[9px] font-bold tracking-widest uppercase text-primary">Advanced</span>
+</div>
+</div>
+<div class="space-y-2">
+<h3 class="text-xl font-headline font-bold tracking-tight text-on-surface">STP Root Bridge Election</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">Manipulate bridge priorities and costs to force a specific switch to become the Spanning Tree root.</p>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container-highest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-lg">schedule</span>
+<span class="text-[10px] font-headline tracking-widest uppercase">40 Mins</span>
+</div>
+<button class="group/btn flex items-center gap-2 text-primary font-bold uppercase text-[10px] tracking-widest hover:text-primary-container transition-colors">
+                                    Launch Lab <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Lab Card 3: EtherChannel LACP -->
+<div class="group bg-surface-container-low p-6 transition-all duration-300 hover:bg-surface-container-high flex flex-col space-y-6">
+<div class="aspect-video w-full bg-surface-container-highest relative overflow-hidden">
+<img class="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity" data-alt="Digital representation of aggregated ethernet links between two core switches with stylized light rays signifying high-speed data flow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_jqGLIf5mB8-3le5TZ1AU02iaGrPP0nuff-flBn-1J2xXBxhbftrlIIFH00vvrt3VJyDYyXI0Qw8sKyXEoyUQSdcFnPYrtYk-zl8Ljmolpk9iwB5QgE07tdbzI2KMwzyxj-daBZOj5oYXgZeDaJd5dlxBDJPFPb12HapjrSbCAMRNZug_RbaoJkMpQyf-ae1Nr8FhKfrJedVaeS8IC3-_Yk_Gn-eJ_nkT5pkrIO0M7WHThr9CmDqf9ftE6ZLhGel_rBcKfF9ozUk"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-tertiary-container/30 backdrop-blur-md px-3 py-1 text-[9px] font-bold tracking-widest uppercase text-tertiary">Completed</span>
+</div>
+</div>
+<div class="space-y-2">
+<h3 class="text-xl font-headline font-bold tracking-tight text-on-surface">EtherChannel (LACP)</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">Bundle multiple physical interfaces into a single logical link for increased bandwidth and redundancy.</p>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-surface-container-highest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-lg">schedule</span>
+<span class="text-[10px] font-headline tracking-widest uppercase">15 Mins</span>
+</div>
+<button class="group/btn flex items-center gap-2 text-on-surface-variant font-bold uppercase text-[10px] tracking-widest hover:text-primary transition-colors">
+                                    Restart Lab <span class="material-symbols-outlined group-hover/btn:translate-x-1 transition-transform">replay</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Domain 3.0: IP Connectivity (Highlight Section) -->
+<section class="max-w-7xl mx-auto space-y-6">
+<div class="flex items-center gap-4">
+<h2 class="text-xs font-headline font-bold tracking-[0.3em] uppercase text-primary">Domain 3.0: IP Connectivity (Routing)</h2>
+<div class="h-[1px] flex-1 bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Featured Lab: Multi-Area OSPF -->
+<div class="bg-surface-container-low p-8 border-l-4 border-primary flex flex-col md:flex-row gap-8 items-center">
+<div class="w-full md:w-1/2 aspect-square md:aspect-auto md:h-64 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Complex network map with distinct colored regions representing OSPF areas, connected by Area Border Routers with technical metrics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLmTF-rafgKcwFyAI6LEmHjcQX7yHDPUgBO4q3qlYRxwsIDGLqNs2DqTVo-9uPvNLmYFlXSXhrv-yWlU_N8s5F01LHajmb7I-ew7FkzXJUVZEgt4XslBaCESaaRZ2KonAU1LyFSaaQ8mmOXbLPQF08ZLAQTjxEDbKm11_HvArh6RXSrhA8QfP_lXvxZA2NPnbGGXxhnc3V8vuzbKTRgsFLfRfGVeMYkUZH2jf5lmK2Q-bfuFlza-Glcsl8hL-Nc7_d547pKOZXdoc"/>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-headline font-bold tracking-widest text-primary-container uppercase">Advanced Scenario</span>
+<div class="h-1 w-1 rounded-full bg-on-surface-variant"></div>
+<span class="text-[10px] font-headline font-bold tracking-widest text-on-surface-variant uppercase">Estimated 60m</span>
+</div>
+<h3 class="text-3xl font-headline font-bold tracking-tighter text-on-surface">OSPF Multi-Area Implementation</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Design and configure a hierarchical OSPF network involving Area 0, Area 1, and Area 2. Troubleshoot route summarization and LSA propagation between domains.</p>
+<div class="pt-4">
+<button class="bg-primary-container text-on-primary-container px-8 py-3 rounded-sm font-bold uppercase text-xs tracking-widest cli-glow hover:scale-[1.02] transition-transform active:scale-95">
+                                        Launch Full Simulator
+                                    </button>
+</div>
+</div>
+</div>
+<!-- Static Routing Challenge -->
+<div class="bg-surface-container-low p-8 flex flex-col md:flex-row gap-8 items-center">
+<div class="w-full md:w-1/2 aspect-square md:aspect-auto md:h-64 bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Topological diagram of three routers in a linear chain with detailed IP address labels for all interfaces and subnets" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2pFlGHw_cxNgb-7l79_SHFULs50w9XjybGtQODsY-UsAJOhIwAwKTP-wi9JIBP01SXxdyPvPsV1PzDB4xkuFiPgA3EvIwnysyihi3s-oEfUA59Yhhy00NeY-DUh8xrYesTMAI0QO_9lAXwGMqLngk3N8KBelOPKYmeJx86KYQZatU2axA5ZOsyTMphsP7gTngOiUxqRG4W0jZBXIA5eXZ9oAVea3ZVO2hp5SpKRIiY7D92pVjsQVuLZOtmr82QOk1SE6LSkxaYgc"/>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex items-center gap-2">
+<span class="text-[10px] font-headline font-bold tracking-widest text-on-surface-variant uppercase">Level 1</span>
+<div class="h-1 w-1 rounded-full bg-on-surface-variant"></div>
+<span class="text-[10px] font-headline font-bold tracking-widest text-on-surface-variant uppercase">Estimated 15m</span>
+</div>
+<h3 class="text-3xl font-headline font-bold tracking-tighter text-on-surface">IPv4 Static &amp; Floating Routes</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Master the fundamentals of next-hop routing and implement floating static routes for automatic failover between HQ and Branch locations.</p>
+<div class="pt-4">
+<button class="border border-primary-container text-primary-container px-8 py-3 rounded-sm font-bold uppercase text-xs tracking-widest hover:bg-primary-container/10 transition-colors">
+                                        Launch Lab
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Domain 4.0 - 6.0: IP Services & Security -->
+<section class="max-w-7xl mx-auto space-y-6">
+<div class="flex items-center gap-4">
+<h2 class="text-xs font-headline font-bold tracking-[0.3em] uppercase text-primary">Domain 4.0 - 6.0: Services, Security &amp; Automation</h2>
+<div class="h-[1px] flex-1 bg-surface-container-highest"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<!-- Compact Card: DHCP Snooping -->
+<div class="bg-surface-container-low p-5 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">security</span>
+<span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-widest">Sec 1.4</span>
+</div>
+<h4 class="font-headline font-bold text-sm tracking-tight mb-2 group-hover:text-primary transition-colors">DHCP Snooping &amp; Dynamic ARP Inspection</h4>
+<p class="text-[10px] text-on-surface-variant mb-4">Protect the access layer from rogue DHCP servers and Man-in-the-Middle attacks.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-on-surface-variant">timer</span>
+<span class="text-[9px] font-headline uppercase tracking-tighter">20 Mins</span>
+</div>
+</div>
+<!-- Compact Card: NAT/PAT -->
+<div class="bg-surface-container-low p-5 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">public</span>
+<span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-widest">Serv 2.1</span>
+</div>
+<h4 class="font-headline font-bold text-sm tracking-tight mb-2 group-hover:text-primary transition-colors">PAT / Overload Configuration</h4>
+<p class="text-[10px] text-on-surface-variant mb-4">Configure Many-to-One Network Address Translation on an edge ISR router.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-on-surface-variant">timer</span>
+<span class="text-[9px] font-headline uppercase tracking-tighter">15 Mins</span>
+</div>
+</div>
+<!-- Compact Card: Wireless LAN -->
+<div class="bg-surface-container-low p-5 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">wifi</span>
+<span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-widest">WLAN 1.2</span>
+</div>
+<h4 class="font-headline font-bold text-sm tracking-tight mb-2 group-hover:text-primary transition-colors">WLC GUI Simulation: SSID Setup</h4>
+<p class="text-[10px] text-on-surface-variant mb-4">Interact with a virtualized Wireless LAN Controller to provision APs and SSIDs.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-on-surface-variant">timer</span>
+<span class="text-[9px] font-headline uppercase tracking-tighter">30 Mins</span>
+</div>
+</div>
+<!-- Compact Card: Automation -->
+<div class="bg-surface-container-low p-5 hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">smart_toy</span>
+<span class="text-[9px] font-bold text-on-surface-variant uppercase tracking-widest">Auto 3.4</span>
+</div>
+<h4 class="font-headline font-bold text-sm tracking-tight mb-2 group-hover:text-primary transition-colors">Python/RESTCONF API Intro</h4>
+<p class="text-[10px] text-on-surface-variant mb-4">Retrieve operational data from a router using structured JSON via RESTCONF.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-on-surface-variant">timer</span>
+<span class="text-[9px] font-headline uppercase tracking-tighter">45 Mins</span>
+</div>
+</div>
+</div>
+</section>
+<footer class="max-w-7xl mx-auto py-12 border-t border-surface-container-highest flex justify-between items-center">
+<p class="text-[10px] font-headline uppercase tracking-widest text-on-surface-variant">© 2024 CCNA AI TUTOR - MISSION READY LABS</p>
+<div class="flex gap-8">
+<a class="text-[10px] font-headline uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-[10px] font-headline uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Use</a>
+<a class="text-[10px] font-headline uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">System Status: Online</a>
+</div>
+</footer>
+</div>
+</main>
+</div>
+</body></html>

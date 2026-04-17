@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { CCNA_DOMAINS } from '@/src/constants';
 import { CheckCircle2, Circle, TrendingUp, AlertTriangle } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
+import { ViewType } from './Sidebar';
 import { 
   AreaChart, 
   Area, 
@@ -20,6 +21,7 @@ interface DashboardProps {
     sessions: number;
     lastSynced: string;
   };
+  onViewChange: (view: ViewType) => void;
 }
 
 const data = [
@@ -31,7 +33,7 @@ const data = [
   { name: '04/15', value: 64 },
 ];
 
-export const Dashboard: React.FC<DashboardProps> = ({ stats }) => {
+export const Dashboard: React.FC<DashboardProps> = ({ stats, onViewChange }) => {
   return (
     <div className="p-10 space-y-12">
       <header className="flex justify-between items-end">
@@ -65,7 +67,11 @@ export const Dashboard: React.FC<DashboardProps> = ({ stats }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              className="glass p-8 rounded-2xl flex flex-col min-h-[320px] relative overflow-hidden group cursor-pointer"
+              onClick={() => i === 0 && onViewChange('lessons')}
+              className={cn(
+                "glass p-8 rounded-2xl flex flex-col min-h-[320px] relative overflow-hidden group cursor-pointer transition-all active:scale-[0.98]",
+                i === 0 ? "border-brand/40 hover:border-brand" : "border-white/5"
+              )}
             >
               {/* Status Badge */}
               <div className={cn(
@@ -98,8 +104,14 @@ export const Dashboard: React.FC<DashboardProps> = ({ stats }) => {
                   <span className="text-2xl font-bold tracking-tight">{progress}%</span>
                 </div>
 
-                <button className="w-full py-3 bg-white/5 hover:bg-white/10 text-white/80 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-white/10 transition-all">
-                  {status === 'STRUGGLING' ? 'Intensive Drill' : 'Continue Lab'}
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    i === 0 && onViewChange('lessons');
+                  }}
+                  className="w-full py-3 bg-white/5 hover:bg-white/10 text-white/80 text-[10px] font-bold uppercase tracking-widest rounded-lg border border-white/10 transition-all"
+                >
+                  {status === 'STRUGGLING' ? 'Intensive Drill' : i === 0 ? 'Resume Lesson' : 'Continue Lab'}
                 </button>
               </div>
             </motion.div>

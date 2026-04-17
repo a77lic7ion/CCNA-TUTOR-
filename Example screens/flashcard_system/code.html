@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CCNA Tutor - Flashcard System</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #131312;
+            color: #e5e2df;
+            font-family: 'Inter', sans-serif;
+        }
+        .font-space-grotesk { font-family: 'Space Grotesk', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        .glass-panel {
+            background: rgba(53, 53, 51, 0.8);
+            backdrop-filter: blur(24px);
+        }
+        .active-glow {
+            box-shadow: 0px 0px 15px rgba(217, 119, 87, 0.3);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#ffb59e",
+                        "inverse-on-surface": "#31302e",
+                        "tertiary": "#5edac7",
+                        "secondary-fixed-dim": "#c9c6bc",
+                        "tertiary-container": "#09a493",
+                        "on-tertiary-fixed-variant": "#005047",
+                        "surface-container": "#20201e",
+                        "on-tertiary": "#003731",
+                        "on-primary-fixed": "#390b00",
+                        "on-surface": "#e5e2df",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#a38c85",
+                        "on-secondary-container": "#b8b5ab",
+                        "on-surface-variant": "#dbc1b9",
+                        "on-secondary-fixed-variant": "#48473f",
+                        "surface-tint": "#ffb59e",
+                        "tertiary-fixed-dim": "#5edac7",
+                        "surface-container-low": "#1c1c1a",
+                        "primary": "#ffb59e",
+                        "secondary-container": "#48473f",
+                        "secondary": "#c9c6bc",
+                        "outline-variant": "#55433d",
+                        "tertiary-fixed": "#7df7e3",
+                        "on-background": "#e5e2df",
+                        "on-primary-fixed-variant": "#7a2f15",
+                        "on-tertiary-fixed": "#00201c",
+                        "secondary-fixed": "#e6e2d8",
+                        "on-primary-container": "#541400",
+                        "inverse-surface": "#e5e2df",
+                        "surface-bright": "#393937",
+                        "surface-dim": "#131312",
+                        "on-tertiary-container": "#00312b",
+                        "on-secondary-fixed": "#1c1c15",
+                        "error-container": "#93000a",
+                        "surface-container-high": "#2a2a28",
+                        "primary-container": "#d97757",
+                        "background": "#131312",
+                        "surface": "#131312",
+                        "surface-container-lowest": "#0e0e0d",
+                        "on-secondary": "#31312a",
+                        "on-primary": "#5c1902",
+                        "surface-container-highest": "#353533",
+                        "on-error": "#690005",
+                        "surface-variant": "#353533",
+                        "primary-fixed": "#ffdbd0",
+                        "inverse-primary": "#99462a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background overflow-hidden">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col bg-[#131312] h-screen w-64 border-r-0 font-space-grotesk tracking-tight">
+<div class="p-8">
+<h1 class="text-xl font-bold tracking-tighter text-[#ffb59e] uppercase">CCNA TUTOR</h1>
+<p class="text-[10px] text-[#c3c0b6] opacity-40 mt-1 tracking-[0.2em]">MONOLITH V1.0</p>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#ffb59e] border-l-4 border-[#d97757] bg-[#1c1c1a] font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="text-sm">Modules</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="text-sm">Simulations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-sm">Network Maps</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#c3c0b6] opacity-60 hover:opacity-100 hover:bg-[#20201e] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="text-sm">Study Lab</span>
+</a>
+</nav>
+<div class="p-4 mt-auto space-y-2">
+<button class="w-full py-4 bg-primary-container text-on-primary-container font-bold text-xs uppercase tracking-widest active-glow mb-8 transition-transform active:scale-95">
+                Start Lab
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-[#c3c0b6] opacity-60 hover:opacity-100 transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-[#c3c0b6] opacity-60 hover:opacity-100 transition-all text-xs" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help_center">help_center</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 ml-64 px-8 w-[calc(100%-16rem)] bg-[#131312] font-space-grotesk">
+<div class="flex items-center gap-8">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline text-sm" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none text-xs w-64 pl-10 focus:ring-1 focus:ring-primary-container placeholder:text-outline/50" placeholder="Search knowledge base..." type="text"/>
+</div>
+<nav class="flex gap-6 text-xs font-medium">
+<a class="text-[#c3c0b6] opacity-70 hover:text-[#ffb59e] transition-all" href="#">CLI</a>
+<a class="text-[#c3c0b6] opacity-70 hover:text-[#ffb59e] transition-all" href="#">Topology</a>
+<a class="text-[#ffb59e] border-b-2 border-[#d97757] pb-1" href="#">Theory</a>
+<a class="text-[#c3c0b6] opacity-70 hover:text-[#ffb59e] transition-all" href="#">Notes</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors" data-icon="lan">lan</button>
+</div>
+<button class="text-[10px] font-bold uppercase tracking-tighter border border-outline-variant px-4 py-1.5 hover:bg-surface-container-high transition-colors">
+                End Session
+            </button>
+<div class="h-8 w-8 bg-surface-container-highest border border-outline-variant overflow-hidden">
+<img alt="User profile" data-alt="Geometric avatar with technical abstract shapes in muted earth tones on dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV9hjTz2sseMekjgCLocFF2RXZK79xv0Id-hHG2UkQYSIeUx2N_grnhlRnUIy0yOJHFlukheRenkon0dI3SMQgTtqT_IDxZUSb0QO-AA9U7IsCgptLLxQhju3ylDwzW-YiKBm7f3Cuq9jbdrSq5sKGDG5oAzWF3efQ4AOJCs46jE9vsDS2JudRY1kElVLGPgCZGobgJhrlDNTSAKRhK3MfYBjcytHbI3_BBfCfoy2CmEqra_NV9iMfzhAGwiKoU7oPyLon6JMnFl0"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 h-[calc(100vh-4rem)] p-12 overflow-y-auto">
+<div class="max-w-4xl mx-auto flex flex-col items-center justify-center min-h-full">
+<!-- Progress Header -->
+<div class="w-full flex justify-between items-end mb-8 font-space-grotesk">
+<div>
+<span class="text-primary-fixed-dim text-xs uppercase tracking-[0.3em] font-bold">STP Mastery</span>
+<h2 class="text-2xl font-bold mt-1">Spanning Tree Protocol</h2>
+</div>
+<div class="text-right">
+<span class="text-sm font-mono text-on-surface-variant">Q 7 / 20</span>
+<div class="w-48 h-1 bg-surface-container-highest mt-2 relative">
+<div class="absolute left-0 top-0 h-full w-[35%] bg-gradient-to-r from-primary-container to-primary active-glow"></div>
+</div>
+</div>
+</div>
+<!-- Central Question Card -->
+<div class="w-full bg-surface-container-low p-12 relative overflow-hidden group">
+<!-- Background Accent Decoration -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary opacity-5 blur-[120px]"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="h-px w-8 bg-primary-container"></span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Inquiry Stage</span>
+</div>
+<h3 class="text-3xl font-headline font-medium leading-tight max-w-2xl text-on-surface">
+                        What is the role of the root port in STP?
+                    </h3>
+<!-- Code Snippet Context (Monolith Style) -->
+<div class="mt-8 p-4 bg-surface-container-lowest font-mono text-sm border-l-2 border-primary-container">
+<span class="text-tertiary"># show spanning-tree vlan 10</span><br/>
+<span class="opacity-50">Interface           Role Sts Cost      Prio.Nbr Type</span><br/>
+<span class="opacity-50">------------------- ---- --- --------- -------- -----------------</span><br/>
+<span class="text-primary">Gi0/1               Root FWD 4         128.1    P2p</span>
+</div>
+</div>
+</div>
+<!-- Multiple Choice Grid -->
+<div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+<button class="flex items-start p-6 bg-surface-container hover:bg-surface-container-high transition-all text-left group">
+<span class="font-mono text-primary-container mr-4 text-xs">01</span>
+<span class="text-sm leading-relaxed">It is the port on a non-root switch that has the lowest root path cost to the root bridge.</span>
+</button>
+<button class="flex items-start p-6 bg-surface-container hover:bg-surface-container-high transition-all text-left group">
+<span class="font-mono text-primary-container mr-4 text-xs">02</span>
+<span class="text-sm leading-relaxed">It is the single port on the root bridge that forwards traffic to the entire network segment.</span>
+</button>
+<button class="flex items-start p-6 bg-surface-container hover:bg-surface-container-high transition-all text-left group">
+<span class="font-mono text-primary-container mr-4 text-xs">03</span>
+<span class="text-sm leading-relaxed">It is a port that is placed in blocking state to prevent a switching loop in the topology.</span>
+</button>
+<button class="flex items-start p-6 bg-surface-container hover:bg-surface-container-high transition-all text-left group">
+<span class="font-mono text-primary-container mr-4 text-xs">04</span>
+<span class="text-sm leading-relaxed">It is the port with the highest priority used for redundancy when the main link fails.</span>
+</button>
+</div>
+<!-- Interaction Footer -->
+<div class="w-full flex justify-between items-center mt-12">
+<button class="flex items-center gap-2 px-6 py-2 text-on-surface-variant hover:text-on-surface transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-lg" data-icon="keyboard_tab">keyboard_tab</span>
+                    Skip Question
+                </button>
+<div class="flex gap-4">
+<button class="px-8 py-3 bg-surface-container-high border border-outline-variant/30 text-xs font-bold uppercase tracking-widest hover:bg-surface-container-highest transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="visibility">visibility</span>
+                        Explanation
+                    </button>
+<button class="px-10 py-3 bg-primary-container text-on-primary-container text-xs font-bold uppercase tracking-widest active-glow hover:scale-[1.02] transition-transform">
+                        Confirm Selection
+                    </button>
+</div>
+</div>
+<!-- Explanation Panel (Hidden by default in logic, visible here for design) -->
+<div class="w-full mt-8 bg-surface-container-high/40 p-8 border-t border-primary-container/20">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<p class="text-xs uppercase tracking-widest text-primary font-bold mb-2">Rationale</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                            Each non-root switch elects exactly <span class="text-on-surface font-semibold">one Root Port</span>. This port is chosen because it has the lowest cumulative path cost to reach the Root Bridge. If costs are equal, STP uses the lowest sender bridge ID, then the lowest sender port priority.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Command Palette (Ambient Shadow Demo) -->
+<div class="fixed bottom-8 right-8 flex flex-col items-end gap-4 pointer-events-none">
+<div class="glass-panel p-4 rounded-xl border border-outline-variant/10 pointer-events-auto active-glow transition-all hover:translate-y-[-4px]">
+<div class="flex items-center gap-4">
+<div class="h-10 w-10 bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="psychology">psychology</span>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">AI Tutor Status</p>
+<p class="text-xs font-mono text-tertiary">Analyzing Weakness: STP Cost Calculation</p>
+</div>
+</div>
+</div>
+</div>
+</body></html>

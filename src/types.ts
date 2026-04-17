@@ -59,3 +59,36 @@ export interface SessionSummary {
   weakAreasDetected: string[];
   nextSteps: string[];
 }
+
+export interface LessonSubtopic {
+  id: string;
+  title: string;
+  objectives: string[];
+  content: string;
+}
+
+export interface ModuleLessonStructure {
+  id: string;
+  title: string;
+  subtopics: LessonSubtopic[];
+}
+
+export interface QuizQuestion {
+  id: number;
+  question: string;
+  options: {
+    A: string;
+    B: string;
+    C: string;
+    D: string;
+  };
+  correctAnswer: string;
+  explanation?: string;
+}
+
+export interface Quiz {
+  id: string;
+  title: string;
+  domain: string;
+  questions: QuizQuestion[];
+}

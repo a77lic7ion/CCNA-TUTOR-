@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 
-export type ViewType = 'dashboard' | 'quiz' | 'labs' | 'settings' | 'modules';
+export type ViewType = 'dashboard' | 'quiz' | 'labs' | 'settings' | 'modules' | 'lessons';
 
 interface SidebarProps {
   currentView: ViewType;
@@ -24,9 +24,10 @@ interface SidebarProps {
 export const Sidebar: React.FC<SidebarProps> = ({ currentView, onViewChange, userName }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'quiz', label: 'Quiz', icon: HelpCircle },
-    { id: 'labs', label: 'Labs', icon: Activity },
-    { id: 'settings', label: 'Settings', icon: Settings },
+    { id: 'lessons', label: 'Lessons', icon: BookOpen },
+    { id: 'quiz', label: 'Diagnostic', icon: HelpCircle },
+    { id: 'labs', label: 'Lab Sim', icon: Activity },
+    { id: 'settings', label: 'Profile', icon: Settings },
   ] as const;
 
   return (
