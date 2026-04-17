@@ -1,0 +1,6 @@
+{
+  "name": "CCNA AI Tutor",
+  "description": "An adaptive, AI-powered CCNA 200-301 study companion with persistence, mock CLI, and custom lab generation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

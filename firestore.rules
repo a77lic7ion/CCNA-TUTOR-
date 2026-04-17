@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: users
+    // Fields: uid (string), name (string), totalSessions (number),
+    //         totalQuestionsAnswered (number), overallScore (number),
+    //         selectedAIModel (string), aiEndpointStatus (map), lastActive (timestamp)
+    //
+    // Collection: users/{userId}/topics
+    // Fields: topicId (string), score (number), weakAreas (list),
+    //         mastered (list), lastTested (timestamp), improvementCurve (list)
+    //
+    // Collection: flashcards
+    // Fields: questionId (string), topicId (string), question (string),
+    //         options (list), correctAnswer (string), explanation (string),
+    //         difficulty (string)
+    //
+    // Collection: labs
+    // Fields: labId (string), title (string), topicIds (list),
+    //         topology (map), tasks (list), theory (string),
+    //         isGenerated (bool), userId (string)
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        (get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin' ||
+          (request.auth.token.email == "Shaunwgordon@gmail.com" && request.auth.token.email_verified == true));
+    }
+
+    function uidNotModified() {
+      return !('uid' in request.resource.data) || request.resource.data.uid == resource.data.uid;
+    }
+
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'name']) &&
+             data.name is string && data.name.size() > 0 && data.name.size() < 100;
+    }
+
+    function isValidTopic(data) {
+      return data.keys().hasAll(['topicId', 'score']) &&
+             data.topicId is string && data.score is number;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId) && isValidUser(request.resource.data);
+      allow update: if isOwner(userId) && isValidUser(request.resource.data) && uidNotModified();
+
+      match /topics/{topicId} {
+        allow read: if isOwner(userId) || isAdmin();
+        allow create, update: if isOwner(userId) && isValidTopic(request.resource.data);
+      }
+
+      match /sessions/{sessionId} {
+        allow read, write: if isOwner(userId) || isAdmin();
+      }
+    }
+
+    match /flashcards/{flashcardId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+    match /labs/{labId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && (request.resource.data.userId == request.auth.uid || isAdmin());
+      allow update, delete: if isAuthenticated() && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "The main user profile containing progress and preferences.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "name": { "type": "string", "description": "Pupil Name" },
+        "totalSessions": { "type": "number", "description": "Count of study sessions" },
+        "totalQuestionsAnswered": { "type": "number", "description": "Total quiz attempts" },
+        "overallScore": { "type": "number", "description": "Current cumulative mastery percentage" },
+        "selectedAIModel": { "type": "string", "description": "Selected model alias (e.g. gemini-flash)" },
+        "aiEndpointStatus": { "type": "object", "description": "Status map of AI backends" },
+        "lastActive": { "type": "string", "format": "date-time", "description": "Last time the user was active" }
+      },
+      "required": ["uid", "name"]
+    },
+    "TopicProgress": {
+      "title": "Topic Progress",
+      "description": "Progress tracking for a specific CCNA topic.",
+      "type": "object",
+      "properties": {
+        "topicId": { "type": "string", "description": "e.g., '1.1'" },
+        "score": { "type": "number", "description": "Section mastery score" },
+        "weakAreas": { "type": "array", "items": { "type": "string" }, "description": "List of specific terms or subtopics failed" },
+        "mastered": { "array": { "type": "string" }, "description": "List of subtopics mastered" },
+        "lastTested": { "type": "string", "format": "date-time" },
+        "improvementCurve": { "type": "array", "items": { "type": "number" }, "description": "History of scores for trending" },
+        "methodsTried": { "type": "array", "items": { "type": "string" }, "description": "Teaching methods used like 'analogy', 'diagram'" }
+      },
+      "required": ["topicId", "score"]
+    },
+    "Flashcard": {
+      "title": "Flashcard Question",
+      "description": "A single CCNA flashcard/quiz question.",
+      "type": "object",
+      "properties": {
+        "questionId": { "type": "string" },
+        "topicId": { "type": "string" },
+        "question": { "type": "string" },
+        "options": { "type": "array", "items": { "type": "string" } },
+        "correctAnswer": { "type": "string", "description": "e.g. 'A', 'B'" },
+        "explanation": { "type": "string" },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"] }
+      },
+      "required": ["questionId", "topicId", "question", "options", "correctAnswer"]
+    },
+    "Lab": {
+      "title": "CCNA Lab",
+      "description": "A practical hands-on lab configuration.",
+      "type": "object",
+      "properties": {
+        "labId": { "type": "string" },
+        "title": { "type": "string" },
+        "topicIds": { "type": "array", "items": { "type": "string" } },
+        "topology": { "type": "object", "description": "Mermaid layout or JSON structure" },
+        "tasks": { "type": "array", "items": { "type": "object" } },
+        "theory": { "type": "string", "description": "Markdown theory explanation" },
+        "isGenerated": { "type": "boolean" },
+        "userId": { "type": "string", "description": "Owner if generated" }
+      },
+      "required": ["labId", "title", "tasks"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Individual user profiles."
+    },
+    "/users/{userId}/topics/{topicId}": {
+      "schema": "TopicProgress",
+      "description": "Topic-level progress for a user."
+    },
+    "/flashcards/{flashcardId}": {
+      "schema": "Flashcard",
+      "description": "Global pool of CCNA questions."
+    },
+    "/labs/{labId}": {
+      "schema": "Lab",
+      "description": "Predefined or generated labs."
+    },
+    "/users/{userId}/sessions/{sessionId}": {
+      "schema": { "type": "object" },
+      "description": "Session history logs."
+    }
+  }
+}
